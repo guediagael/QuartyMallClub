@@ -1,0 +1,289 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="414" height="2019" viewBox="0 0 414 2019">
+  <defs>
+    <filter id="card" x="7.5" y="1359.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-2" x="7.5" y="1781.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-2"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-3" x="198.5" y="1359.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-3"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-4" x="198.5" y="1781.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-4"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-5" x="7.5" y="93.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-5"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-6" x="198.5" y="93.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-6"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-7" x="7.5" y="304.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-7"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-8" x="198.5" y="304.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-8"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-8"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-9" x="7.5" y="515.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-9"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-9"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-10" x="198.5" y="515.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-10"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-10"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-11" x="7.5" y="726.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-11"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-11"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-12" x="198.5" y="726.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-12"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-12"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-13" x="7.5" y="937.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-13"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-13"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-14" x="198.5" y="937.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-14"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-14"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-15" x="7.5" y="1148.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-15"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-15"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-16" x="7.5" y="1570.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-16"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-16"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-17" x="198.5" y="1148.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-17"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-17"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="card-18" x="198.5" y="1570.5" width="215" height="226" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="7.5" result="blur-18"/>
+      <feFlood flood-color="#1b1c20" flood-opacity="0.051"/>
+      <feComposite operator="in" in2="blur-18"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-_09_search_result_2">
+      <rect width="414" height="2019"/>
+    </clipPath>
+  </defs>
+  <g id="_09_search_result_2" data-name="09 search result – 2" clip-path="url(#clip-_09_search_result_2)">
+    <rect width="414" height="2019" fill="#f2f4f7"/>
+    <g id="Group_2582" data-name="Group 2582" transform="translate(0 1202)">
+      <g transform="matrix(1, 0, 0, 1, 0, -1202)" filter="url(#card)">
+        <rect id="card-19" data-name="card" width="170" height="181" rx="15" transform="translate(30 1372)" fill="#f9fafb"/>
+      </g>
+      <text id="Сантехника" transform="translate(115.356 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-40.007" y="0">Сантехника</tspan></text>
+      <rect id="card-20" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#c58bd8"/>
+    </g>
+    <g id="Group_2592" data-name="Group 2592" transform="translate(0 1624)">
+      <g transform="matrix(1, 0, 0, 1, 0, -1624)" filter="url(#card-2)">
+        <rect id="card-21" data-name="card" width="170" height="181" rx="15" transform="translate(30 1794)" fill="#f9fafb"/>
+      </g>
+      <text id="Свет" transform="translate(115.323 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-15.593" y="0">Свет</tspan></text>
+      <rect id="card-22" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#fca588"/>
+    </g>
+    <g id="Group_2582-2" data-name="Group 2582" transform="translate(191 1202)">
+      <g transform="matrix(1, 0, 0, 1, -191, -1202)" filter="url(#card-3)">
+        <rect id="card-23" data-name="card" width="170" height="181" rx="15" transform="translate(221 1372)" fill="#f9fafb"/>
+      </g>
+      <text id="Мебель" transform="translate(115.333 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-26.486" y="0">Мебель</tspan></text>
+      <rect id="card-24" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#9ea8de"/>
+    </g>
+    <g id="Group_2591" data-name="Group 2591" transform="translate(191 1624)">
+      <g transform="matrix(1, 0, 0, 1, -191, -1624)" filter="url(#card-4)">
+        <rect id="card-25" data-name="card" width="170" height="181" rx="15" transform="translate(221 1794)" fill="#f9fafb"/>
+      </g>
+      <text id="Избранное" transform="translate(115.352 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-38.1" y="0">Избранное</tspan></text>
+      <rect id="card-26" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#f26794"/>
+    </g>
+    <g id="Group_2582-3" data-name="Group 2582" transform="translate(0 -64)">
+      <g transform="matrix(1, 0, 0, 1, 0, 64)" filter="url(#card-5)">
+        <rect id="card-27" data-name="card" width="170" height="181" rx="15" transform="translate(30 106)" fill="#f9fafb"/>
+      </g>
+      <text id="Окна" transform="translate(115.324 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-17.415" y="0">Окна</tspan></text>
+      <rect id="card-28" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#f26794"/>
+    </g>
+    <g id="Group_2582-4" data-name="Group 2582" transform="translate(191 -64)">
+      <g transform="matrix(1, 0, 0, 1, -191, 64)" filter="url(#card-6)">
+        <rect id="card-29" data-name="card" width="170" height="181" rx="15" transform="translate(221 106)" fill="#f9fafb"/>
+      </g>
+      <text id="Напольные_покрытия" data-name="Напольные
+покрытия" transform="translate(115.356 319.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-39.525" y="0">Напольные</tspan><tspan x="-33.479" y="19">покрытия</tspan></text>
+      <rect id="card-30" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#bd83d8"/>
+    </g>
+    <g id="Group_2582-5" data-name="Group 2582" transform="translate(0 147)">
+      <g transform="matrix(1, 0, 0, 1, 0, -147)" filter="url(#card-7)">
+        <rect id="card-31" data-name="card" width="170" height="181" rx="15" transform="translate(30 317)" fill="#f9fafb"/>
+      </g>
+      <text id="Шторы_жалюзи_рольставни" data-name="Шторы, жалюзи,
+рольставни" transform="translate(118 319.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-56.325" y="0">Шторы, жалюзи,</tspan><tspan x="-40.004" y="19">рольставни</tspan></text>
+      <rect id="card-32" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#fca588"/>
+    </g>
+    <g id="Group_2582-6" data-name="Group 2582" transform="translate(191 147)">
+      <g transform="matrix(1, 0, 0, 1, -191, -147)" filter="url(#card-8)">
+        <rect id="card-33" data-name="card" width="170" height="181" rx="15" transform="translate(221 317)" fill="#f9fafb"/>
+      </g>
+      <text id="Двери" transform="translate(115.327 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-21.417" y="0">Двери</tspan></text>
+      <rect id="card-34" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#a17ee9"/>
+    </g>
+    <g id="Group_2582-7" data-name="Group 2582" transform="translate(0 358)">
+      <g transform="matrix(1, 0, 0, 1, 0, -358)" filter="url(#card-9)">
+        <rect id="card-35" data-name="card" width="170" height="181" rx="15" transform="translate(30 528)" fill="#f9fafb"/>
+      </g>
+      <text id="Потолки" transform="translate(115.336 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-28.892" y="0">Потолки</tspan></text>
+      <rect id="card-36" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#8bdde1"/>
+    </g>
+    <g id="Group_2582-8" data-name="Group 2582" transform="translate(191 358)">
+      <g transform="matrix(1, 0, 0, 1, -191, -358)" filter="url(#card-10)">
+        <rect id="card-37" data-name="card" width="170" height="181" rx="15" transform="translate(221 528)" fill="#f9fafb"/>
+      </g>
+      <text id="Строительство_и_стройматериалы" data-name="Строительство
+и стройматериалы" transform="translate(118 319.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-50.781" y="0">Строительство</tspan><tspan x="-64.046" y="19">и стройматериалы</tspan></text>
+      <rect id="card-38" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#9eaadd"/>
+    </g>
+    <g id="Group_2582-9" data-name="Group 2582" transform="translate(0 569)">
+      <g transform="matrix(1, 0, 0, 1, 0, -569)" filter="url(#card-11)">
+        <rect id="card-39" data-name="card" width="170" height="181" rx="15" transform="translate(30 739)" fill="#f9fafb"/>
+      </g>
+      <text id="Ремонтные_работы" data-name="Ремонтные 
+работы" transform="translate(115.358 319.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-40.79" y="0">Ремонтные </tspan><tspan x="-25.242" y="19">работы</tspan></text>
+      <rect id="card-40" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#d171eb"/>
+    </g>
+    <g id="Group_2582-10" data-name="Group 2582" transform="translate(191 569)">
+      <g transform="matrix(1, 0, 0, 1, -191, -569)" filter="url(#card-12)">
+        <rect id="card-41" data-name="card" width="170" height="181" rx="15" transform="translate(221 739)" fill="#f9fafb"/>
+      </g>
+      <text id="Кухни" transform="translate(115.326 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-20.351" y="0">Кухни</tspan></text>
+      <rect id="card-42" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#f26794"/>
+    </g>
+    <g id="Group_2582-11" data-name="Group 2582" transform="translate(0 780)">
+      <g transform="matrix(1, 0, 0, 1, 0, -780)" filter="url(#card-13)">
+        <rect id="card-43" data-name="card" width="170" height="181" rx="15" transform="translate(30 950)" fill="#f9fafb"/>
+      </g>
+      <text id="Кондиционеры" transform="translate(115.399 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-52.476" y="0">Кондиционеры</tspan></text>
+      <rect id="card-44" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#fca588"/>
+    </g>
+    <g id="Group_2582-12" data-name="Group 2582" transform="translate(191 780)">
+      <g transform="matrix(1, 0, 0, 1, -191, -780)" filter="url(#card-14)">
+        <rect id="card-45" data-name="card" width="170" height="181" rx="15" transform="translate(221 950)" fill="#f9fafb"/>
+      </g>
+      <text id="Дизайн_интерьеров" data-name="Дизайн
+интерьеров" transform="translate(115.358 319.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-25.365" y="0">Дизайн</tspan><tspan x="-40.927" y="19">интерьеров</tspan></text>
+      <rect id="card-46" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#a17ee9"/>
+    </g>
+    <g id="Group_2582-13" data-name="Group 2582" transform="translate(0 991)">
+      <g transform="matrix(1, 0, 0, 1, 0, -991)" filter="url(#card-15)">
+        <rect id="card-47" data-name="card" width="170" height="181" rx="15" transform="translate(30 1161)" fill="#f9fafb"/>
+      </g>
+      <text id="Декоративная_штукатурка_краски" data-name="Декоративная
+штукатурка, краски" transform="translate(118 319.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-48.655" y="0">Декоративная</tspan><tspan x="-65.916" y="19">штукатурка, краски</tspan></text>
+      <rect id="card-48" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#8bdde1"/>
+    </g>
+    <g id="Group_2594" data-name="Group 2594" transform="translate(0 1413)">
+      <g transform="matrix(1, 0, 0, 1, 0, -1413)" filter="url(#card-16)">
+        <rect id="card-49" data-name="card" width="170" height="181" rx="15" transform="translate(30 1583)" fill="#f9fafb"/>
+      </g>
+      <text id="Другие_услуги" data-name="Другие услуги" transform="translate(115.38 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-47.595" y="0">Другие услуги</tspan></text>
+      <rect id="card-50" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#f26794"/>
+    </g>
+    <g id="Group_2582-14" data-name="Group 2582" transform="translate(191 991)">
+      <g transform="matrix(1, 0, 0, 1, -191, -991)" filter="url(#card-17)">
+        <rect id="card-51" data-name="card" width="170" height="181" rx="15" transform="translate(221 1161)" fill="#f9fafb"/>
+      </g>
+      <text id="Бытовая_техника" data-name="Бытовая техника" transform="translate(105 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-58.017" y="0">Бытовая техника</tspan></text>
+      <rect id="card-52" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#9eaadd"/>
+    </g>
+    <g id="Group_2595" data-name="Group 2595" transform="translate(191 1413)">
+      <g transform="matrix(1, 0, 0, 1, -191, -1413)" filter="url(#card-18)">
+        <rect id="card-53" data-name="card" width="170" height="181" rx="15" transform="translate(221 1583)" fill="#f9fafb"/>
+      </g>
+      <text id="Плитка" transform="translate(115.33 326.055)" fill="#2d4057" font-size="14" font-family="OpenSans-Regular, Open Sans"><tspan x="-24.329" y="0">Плитка</tspan></text>
+      <rect id="card-54" data-name="card" width="170" height="122.582" rx="15" transform="translate(30 170)" fill="#d171eb"/>
+    </g>
+    <path id="bg" d="M0,0H414V100H0Z" fill="#f2f4f7"/>
+    <text id="Title" transform="translate(207 71)" fill="#2d4057" font-size="20" font-family="Montserrat-Bold, Montserrat" font-weight="700" letter-spacing="-0.024em"><tspan x="-40.104" y="0">Скидки</tspan></text>
+    <g id="Group_2478" data-name="Group 2478" transform="translate(16 57)">
+      <path id="left-arrow" d="M7.176,4.909a.78.78,0,0,1,1.109,1.1L2.663,11.627H21.212A.781.781,0,0,1,22,12.4a.79.79,0,0,1-.787.787H2.663L8.284,18.8a.8.8,0,0,1,0,1.109.777.777,0,0,1-1.109,0L.224,12.958a.782.782,0,0,1,0-1.1Z" transform="translate(0.001 -4.676)" fill="#2d4057"/>
+    </g>
+    <g id="Status_Bar" data-name="Status Bar" transform="translate(-3)">
+      <g id="Battery" transform="translate(370 17)">
+        <g id="Border" transform="translate(0 0.333)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1" opacity="0.35">
+          <rect width="22" height="11.333" rx="2.667" stroke="none"/>
+          <rect x="0.5" y="0.5" width="21" height="10.333" rx="2.167" fill="none"/>
+        </g>
+        <path id="Cap" d="M0,0V4A2.17,2.17,0,0,0,1.328,2,2.17,2.17,0,0,0,0,0" transform="translate(23 4)" opacity="0.4"/>
+        <rect id="Capacity" width="18" height="7.333" rx="1.333" transform="translate(2 2.333)"/>
+      </g>
+      <path id="Wifi" d="M7.637,10.966a.313.313,0,0,1-.221-.093l-2-2.016a.313.313,0,0,1,.01-.456,3.421,3.421,0,0,1,4.419,0,.311.311,0,0,1,.1.226.315.315,0,0,1-.094.23l-2,2.016A.308.308,0,0,1,7.637,10.966Zm3.508-3.538a.312.312,0,0,1-.214-.085,4.9,4.9,0,0,0-6.585,0,.312.312,0,0,1-.214.085.308.308,0,0,1-.22-.091L2.758,6.17a.322.322,0,0,1,0-.459,7.158,7.158,0,0,1,9.752,0,.322.322,0,0,1,.1.229.326.326,0,0,1-.094.23L11.364,7.337A.309.309,0,0,1,11.145,7.428ZM13.8,4.743a.3.3,0,0,1-.214-.087,8.64,8.64,0,0,0-11.907,0,.3.3,0,0,1-.214.087.308.308,0,0,1-.22-.091L.094,3.486a.322.322,0,0,1,0-.456,10.9,10.9,0,0,1,15.08,0,.325.325,0,0,1,.1.228.319.319,0,0,1-.094.229L14.023,4.652A.307.307,0,0,1,13.8,4.743Z" transform="translate(349.694 17.331)"/>
+      <path id="Cellular_Connection" data-name="Cellular Connection" d="M16,10.667H15a1,1,0,0,1-1-1V1a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1V9.667A1,1,0,0,1,16,10.667Zm-4.667,0h-1a1,1,0,0,1-1-1V3.334a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1V9.667A1,1,0,0,1,11.334,10.667Zm-4.667,0h-1a1,1,0,0,1-1-1v-4a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1v4A1,1,0,0,1,6.666,10.667ZM2,10.667H1a1,1,0,0,1-1-1v-2a1,1,0,0,1,1-1H2a1,1,0,0,1,1,1v2A1,1,0,0,1,2,10.667Z" transform="translate(327.667 17.667)"/>
+      <g id="Time_Style" data-name="Time Style" transform="translate(21 9)">
+        <text id="_Time" data-name="↳ Time" transform="translate(0 5.33)" font-size="15" font-family="SFProText-Semibold, SF Pro Text" font-weight="600" letter-spacing="0em"><tspan x="10.893" y="14">9:41</tspan></text>
+      </g>
+    </g>
+    <rect id="Rectangle_712" data-name="Rectangle 712" width="51" height="53" transform="translate(0 38)" fill="#fff" opacity="0"/>
+  </g>
+</svg>
