@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:quarty_mall_club/Utils.dart';
+import 'package:quarty_mall_club/screens/onBoarding/onboarding_screen.dart';
+import 'package:quarty_mall_club/string_resources.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -21,43 +30,41 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: MaterialColor(0xFFF85564, Utils.primarySwatchColor),
       ),
-      home: MyHomePage(),
+      home: SplashPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
+class SplashPage extends StatefulWidget {
+  SplashPage({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SharedPreferences.getInstance().then((sp) {
+        if (sp.getString(KEY_USER_TOKEN) == null) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (ctx) => Onboarding()));
+        }
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/pictures/splash_big.png'),
-            fit: BoxFit.cover
-          )
-        ),
-        ),
-
+            image: DecorationImage(
+                image: AssetImage('assets/pictures/splash_big.png'),
+                fit: BoxFit.cover)),
+      ),
     );
   }
 }
