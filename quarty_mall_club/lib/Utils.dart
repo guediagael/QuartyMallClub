@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Utils{
+
+  static Color getPrimaryColor()=> Color(0xffF93C64);
   static Map<int, Color>primarySwatchColor = {
     50:Color.fromRGBO(136,14,79, .1),
     100:Color.fromRGBO(136,14,79, .2),
@@ -13,4 +15,19 @@ class Utils{
     800:Color.fromRGBO(136,14,79, .9),
     900:Color.fromRGBO(136,14,79, 1),
   };
+
+  static BoxDecoration getRedRoundedCornerBoxDecoration(){
+    return BoxDecoration(
+        color: getPrimaryColor(),
+        borderRadius: BorderRadius.all(Radius.circular(41.0))
+    );
+  }
+
+  static BoxDecoration getWhiteRoundedColoredCornerBoxDecoration(){
+    return BoxDecoration(
+        color: Colors.transparent,
+        border: Border.all(color: getPrimaryColor()),
+        borderRadius: BorderRadius.all(Radius.circular(41.0))
+    );
+  }
 }

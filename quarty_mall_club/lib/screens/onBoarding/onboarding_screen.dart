@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:quarty_mall_club/screens/auth/login_screen.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 
 class Onboarding extends StatefulWidget {
@@ -128,7 +129,7 @@ class _OnboardingState extends State<Onboarding> {
   }
 
   _skipOnboarding(){
-    
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx)=> LoginScreen()));
   }
 
   _moveToNextStep(){

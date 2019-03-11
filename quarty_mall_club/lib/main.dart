@@ -49,6 +49,7 @@ class _SplashPageState extends State<SplashPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       SharedPreferences.getInstance().then((sp) {
         if (sp.getString(KEY_USER_TOKEN) == null) {
+          //TODO : put a timer to let the time to the user to see the splash screen
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (ctx) => Onboarding()));
         }

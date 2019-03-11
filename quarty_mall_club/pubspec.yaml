@@ -50,6 +50,8 @@ flutter:
     - assets/pictures/onboarding_two_indicator_big.png
     - assets/pictures/onboarding_three_indicator_big.png
     - assets/pictures/right_arrow_big.png
+    - assets/pictures/one_bag_big.png
+    - assets/pictures/two_bags_big.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
