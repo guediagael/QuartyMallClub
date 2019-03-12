@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quarty_mall_club/Utils.dart';
+import 'package:quarty_mall_club/utils.dart';
 import 'package:quarty_mall_club/screens/onBoarding/onboarding_screen.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 import 'package:shared_preferences/shared_preferences.dart';

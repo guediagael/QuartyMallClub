@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quarty_mall_club/Utils.dart';
+import 'package:quarty_mall_club/screens/auth/order_new_card.dart';
+import 'package:quarty_mall_club/utils.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -40,7 +41,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 48),
             child: FlatButton(
-              onPressed: _openOrderNewCardScreen,
+              onPressed: ()=>_openOrderNewCardScreen(context),
               child: Container(height: 50, child: Center(child: Text(ORDER_A_CARD))),
               shape: RoundedRectangleBorder(
                   side: BorderSide(color: Utils.getPrimaryColor()),
@@ -54,8 +55,8 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  _openOrderNewCardScreen() {
-    print("ordering a card");
+  _openOrderNewCardScreen(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> NewCardScreen()));
   }
 
   _openAddCardScreen() {

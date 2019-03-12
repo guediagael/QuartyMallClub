@@ -14,4 +14,7 @@ const String ADD_PHONE_NUMBER ="Введите номер телефона";
 const String GET_CODE ="ПОЛУЧИТЬ КОД";
 const String INSERT_CODE ="Введите код";
 const String GO_TO_LIST ="ВПЕРЕД К СКИДКАМ";
+const String SEND ="ОТПРАВИТЬ";
+const String LETS_ADD_A_CARD ="Добавляем карту";
+const String ERROR_COMPULSORY_FIELD ="This field shouldn't be empty"; //TODO
 
