@@ -29,6 +29,10 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: MaterialColor(0xFFF85564, Utils.primarySwatchColor),
+        indicatorColor: Utils.getPrimaryColor(),
+        inputDecorationTheme: InputDecorationTheme(contentPadding: EdgeInsets.only(bottom: 0)),
+        backgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(elevation: 0, color: Colors.white)
       ),
       home: SplashPage(),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quarty_mall_club/screens/auth/add_card_step_one.dart';
 import 'package:quarty_mall_club/screens/auth/order_new_card.dart';
 import 'package:quarty_mall_club/utils.dart';
 import 'package:quarty_mall_club/string_resources.dart';
@@ -28,7 +29,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 48),
             child: FlatButton(
-              onPressed: _openAddCardScreen,
+              onPressed: ()=>_openAddCardScreen(context),
               child: Container(height: 50, child: Center(child: Text(ADD_CARD))),
               shape: RoundedRectangleBorder(
                   side: BorderSide(color: Utils.getPrimaryColor()),
@@ -42,7 +43,7 @@ class LoginScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 48),
             child: FlatButton(
               onPressed: ()=>_openOrderNewCardScreen(context),
-              child: Container(height: 50, child: Center(child: Text(ORDER_A_CARD))),
+              child: Container(height: 50, child: Center(child: Text(ORDER_A_CARD.toUpperCase()))),
               shape: RoundedRectangleBorder(
                   side: BorderSide(color: Utils.getPrimaryColor()),
                   borderRadius: BorderRadius.circular(24)),
@@ -59,7 +60,7 @@ class LoginScreen extends StatelessWidget {
     Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> NewCardScreen()));
   }
 
-  _openAddCardScreen() {
-    print("adding card");
+  _openAddCardScreen(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> AddCardScreen()));
   }
 }
