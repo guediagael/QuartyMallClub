@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:quarty_mall_club/utils.dart';
+import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:quarty_mall_club/screens/onBoarding/onboarding_screen.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         indicatorColor: Utils.getPrimaryColor(),
         inputDecorationTheme: InputDecorationTheme(contentPadding: EdgeInsets.only(bottom: 0)),
         backgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(elevation: 0, color: Colors.white)
+        appBarTheme: AppBarTheme(elevation: 0, color: Colors.white),
       ),
       home: SplashPage(),
     );

@@ -29,18 +29,19 @@ class _MainScreenState extends State<MainScreen> {
         .copyWith(statusBarColor: Utils.getMainBackgroundColor()));
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            centerTitle: true,
-            title: Text(
-              _title,
-              style: TextStyle(color: Utils.getMainTextColor()),),
-            elevation: 0,
-            backgroundColor: Utils.getMainBackgroundColor(),
-          ),
-          body: _buildBody(),
-          backgroundColor: Utils.getMainBackgroundColor(),
-          bottomNavigationBar: _buildMainNavigation(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: Text(
+          _title,
+          style: TextStyle(color: Utils.getMainTextColor()),
+        ),
+        elevation: 0,
+        backgroundColor: Utils.getMainBackgroundColor(),
+      ),
+      body: _buildBody(),
+      backgroundColor: Utils.getMainBackgroundColor(),
+      bottomNavigationBar: _buildMainNavigation(),
     ));
   }
 
@@ -58,14 +59,18 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (selected) {
           setState(() {
             _selectedIndex = selected;
-            switch(selected){
-              case 1: _title = SALES;
-              break;
-              case 2: _title = ABOUT;
-              break;
-              case 3: _title = PROFILE;
-              break;
-              default: _title = "";
+            switch (selected) {
+              case 1:
+                _title = SALES;
+                break;
+              case 2:
+                _title = ABOUT;
+                break;
+              case 3:
+                _title = PROFILE;
+                break;
+              default:
+                _title = "";
             }
           });
         },
@@ -112,28 +117,51 @@ class _MainScreenState extends State<MainScreen> {
     return navBarList;
   }
 
-  Container _buildBody(){
+  Container _buildBody() {
     print("current index: $_selectedIndex");
-    switch(_selectedIndex){
-      case 0: return _buildMain();
-      break;
-      case 1: return _buildSales();
-      case 2: return _buildAbout();
-      case 3: return _buildProfile();
-      default :  _buildMain();
+    switch (_selectedIndex) {
+      case 0:
+        return _buildMain();
+        break;
+      case 1:
+        return _buildSales();
+      case 2:
+        return _buildAbout();
+      case 3:
+        return _buildProfile();
+      default:
+        _buildMain();
     }
   }
-  Container _buildMain() {
 
+  Container _buildMain() {
 //    TODO
   }
 
   Container _buildSales() {
-
 //    TODO
   }
 
   Container _buildAbout() {
+    return Container(
+      child: ListView(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(left: 16),
+            height: _screenHeight / 2,
+            width: _screenWidth,
+            child: Image.asset(
+              "assets/pictures/about_background_big.png",
+              fit: BoxFit.cover,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(16, 24, 32, 24),
+              child: Text(ABOUT_DESCRIPTION,
+                  style: TextStyle(color: Utils.getMainTextColor())))
+        ],
+      ),
+    );
   }
 
   Container _buildProfile() {

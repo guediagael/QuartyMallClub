@@ -24,6 +24,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   shared_preferences: ^0.5.1+1
+  http: "^0.12.0"
+#  cached_network_image: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -46,12 +48,23 @@ flutter:
     - assets/pictures/splash_big.png
     - assets/pictures/onboarding2_big.png
     - assets/pictures/onboarding3_big.png
+    - assets/pictures/onboarding4_big.png
     - assets/pictures/onboarding_one_indicator_big.png
     - assets/pictures/onboarding_two_indicator_big.png
     - assets/pictures/onboarding_three_indicator_big.png
     - assets/pictures/right_arrow_big.png
     - assets/pictures/one_bag_big.png
     - assets/pictures/two_bags_big.png
+    - assets/pictures/percentage_medium.png
+    - assets/pictures/about_background_big.png
+
+fonts:
+  - family: SF-Pro-Display
+    fonts:
+      - asset: assets/fonts/SF-Pro-Display-light.otf
+  - family: Montserrat
+    fonts:
+      - asset: assets/fonts/Montserrat-Regular.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

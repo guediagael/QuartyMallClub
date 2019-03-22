@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quarty_mall_club/Utils.dart';
+import 'package:flutter/services.dart';
+import 'package:quarty_mall_club/screens/main/main.dart';
+import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:quarty_mall_club/string_resources.dart';
+import 'package:quarty_mall_club/utils/commons.dart';
 
 class AddCardScreen extends StatefulWidget {
   @override
@@ -38,13 +41,12 @@ class _AddCardScreenState extends State<AddCardScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            if(_isPhoneSent){
+            if (_isPhoneSent) {
               setState(() {
                 _isPhoneSent = false;
               });
-            }else{
+            } else {
               Navigator.pop(context);
-
             }
           },
           color: Colors.black,
@@ -60,8 +62,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
         children: <Widget>[
           Center(
             child: Container(
-              width: _screenWidth * 2/7,
-              height: _screenHeight * 1/5,
+              width: _screenWidth * 2 / 7,
+              height: _screenHeight * 1 / 5,
               child: Image(
                 image: AssetImage(
                   'assets/pictures/one_bag_big.png',
@@ -73,20 +75,12 @@ class _AddCardScreenState extends State<AddCardScreen> {
           SizedBox(
             height: 24,
           ),
-          _isPhoneSent? _getCodeForm() : _getPhoneForm(),
-          SizedBox(height: 16,),
-          FlatButton(
-            onPressed: _checkForm,
-            child: Container(
-                height: 32,
-                width: _screenWidth * 2/3,
-                child: Center(child: Text(_isPhoneSent?GO_TO_LIST :GET_CODE))),
-            shape: RoundedRectangleBorder(
-                side: BorderSide(color: Utils.getPrimaryColor()),
-                borderRadius: BorderRadius.circular(24)),
-            textColor: Colors.white,
-            color: Utils.getPrimaryColor(),
-          )
+          _isPhoneSent ? _getCodeForm() : _getPhoneForm(),
+          SizedBox(
+            height: 16,
+          ),
+          Utils.getPurpleFlatButton(_isPhoneSent ? GO_TO_LIST : GET_CODE,
+              () => _checkForm(), _screenWidth * 2 / 3, _screenHeight / 13)
         ],
       ),
     );
@@ -96,6 +90,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
     return Form(
       key: _phoneFormKey,
       child: TextFormField(
+        autofocus: true,
         controller: _phoneController,
         decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(28)),
@@ -103,17 +98,26 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 horizontal: formFieldPaddingHor,
                 vertical: formFieldPaddingVert),
             hintText: ADD_PHONE_NUMBER),
+        validator: (phone) {
+          if (phone.isEmpty) return ERROR_COMPULSORY_FIELD;
+          if (phone.trim().length != 16) return TO_LONG;
+        },
       ),
       autovalidate: !_isFirstTry,
     );
   }
 
-
   Form _getCodeForm() {
     return Form(
       key: _codeFormKey,
       child: TextFormField(
+        autofocus: true,
         controller: _codeController,
+        validator: (code) {
+          if (code.isEmpty) {
+            return ERROR_COMPULSORY_FIELD;
+          }
+        },
         decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(28)),
             contentPadding: EdgeInsets.symmetric(
@@ -130,8 +134,9 @@ class _AddCardScreenState extends State<AddCardScreen> {
   _sendCode() {}
 
   _checkForm() {
-    setState(() {
-      _isPhoneSent = true;
-    });
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>MainScreen()));
+//    setState(() {
+//      _isPhoneSent = true;
+//    });
   }
 }

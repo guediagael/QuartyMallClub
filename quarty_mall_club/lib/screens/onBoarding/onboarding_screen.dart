@@ -76,7 +76,7 @@ class _OnboardingState extends State<Onboarding> {
     switch(_onboardingStep){
       case 1: return AssetImage('assets/pictures/onboarding2_big.png');
       case 2: return AssetImage('assets/pictures/onboarding3_big.png');
-      case 3: return AssetImage('assets/pictures/onboarding2_big.png');
+      case 3: return AssetImage('assets/pictures/onboarding4_big.png');
       default: return AssetImage('assets/pictures/onboarding2_big.png');
     }
   }
@@ -92,7 +92,7 @@ class _OnboardingState extends State<Onboarding> {
       break;
       default: textString = _stepOneTextHeader;
     }
-    return Text(textString, style: TextStyle(color: Colors.white),);
+    return Text(textString, style: TextStyle(color: Colors.white, fontFamily: 'Montserrat'),);
   }
   Text _buildTextBody(){
     var textString;
@@ -105,7 +105,7 @@ class _OnboardingState extends State<Onboarding> {
       break;
       default: textString = _stepOneTextBody;
     }
-    return Text(textString, style: TextStyle(color: Colors.white), textAlign: TextAlign.center,);
+    return Text(textString, style: TextStyle(color: Colors.white, fontFamily: 'SF-Pro-Display'), textAlign: TextAlign.center,);
   }
   Container _buildIndicator(){
     var image;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quarty_mall_club/screens/auth/add_card_step_one.dart';
+import 'package:quarty_mall_club/screens/auth/add_card.dart';
 import 'package:quarty_mall_club/screens/auth/order_new_card.dart';
-import 'package:quarty_mall_club/utils.dart';
+import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -28,28 +28,13 @@ class LoginScreen extends StatelessWidget {
           Padding(padding: EdgeInsets.symmetric(vertical: 32)),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 48),
-            child: FlatButton(
-              onPressed: ()=>_openAddCardScreen(context),
-              child: Container(height: 50, child: Center(child: Text(ADD_CARD))),
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Utils.getPrimaryColor()),
-                  borderRadius: BorderRadius.circular(24)),
-              textColor: Colors.white,
-              color: Utils.getPrimaryColor(),
-            ),
+            child: Utils.getPurpleFlatButton(ADD_CARD, ()=>_openAddCardScreen(context), null, 50)
+
           ),
           Padding(padding: EdgeInsets.all(8)),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 48),
-            child: FlatButton(
-              onPressed: ()=>_openOrderNewCardScreen(context),
-              child: Container(height: 50, child: Center(child: Text(ORDER_A_CARD.toUpperCase()))),
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Utils.getPrimaryColor()),
-                  borderRadius: BorderRadius.circular(24)),
-              textColor: Utils.getPrimaryColor(),
-              color: Colors.white,
-            ),
+            child: Utils.getWhiteFlatButton(ORDER_A_CARD, ()=>_openOrderNewCardScreen(context))
           ),
         ],
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quarty_mall_club/Utils.dart';
+import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 
 class NewCardScreen extends StatefulWidget {
