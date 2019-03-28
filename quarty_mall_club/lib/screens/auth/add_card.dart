@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quarty_mall_club/api/auth_api.dart';
 import 'package:quarty_mall_club/screens/main/main.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:quarty_mall_club/string_resources.dart';
@@ -134,7 +135,11 @@ class _AddCardScreenState extends State<AddCardScreen> {
   _sendCode() {}
 
   _checkForm() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>MainScreen()));
+    AuthApi.internal().getToken(10001).then((response){
+      var token = response["token"];
+      print("token: $token");
+    });
+//    Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>MainScreen()));
 //    setState(() {
 //      _isPhoneSent = true;
 //    });

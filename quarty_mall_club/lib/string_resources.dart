@@ -20,7 +20,7 @@ const String TO_LONG = "Слишком длинный";
 const String WRONG_FORMAT = "Неверный формат";
 const String ERROR_COMPULSORY_FIELD = "This field shouldn't be empty"; //TODO
 
-const String BASE_URL = "http://84.201.141.163api";
+const String BASE_URL = "http://84.201.141.163/api";
 const String SERVER_ERROR = "Server error"; //TODO
 
 const String HOME_SCREEN = "Главная";

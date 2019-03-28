@@ -12,7 +12,6 @@ class _NewCardState extends State {
   TextEditingController _surnameController = TextEditingController();
   TextEditingController _birthdayController = TextEditingController();
   TextEditingController _cityController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   bool _isFirstTry, _isLoading;
@@ -162,21 +161,6 @@ class _NewCardState extends State {
             validator: (city) {
               if (city.isEmpty) return ERROR_COMPULSORY_FIELD;
               if (city.trim().length > 30) return TO_LONG;
-            },
-          ),
-        ),
-        Container(
-          height: _screenHeight * 4 / 49,
-          child: TextFormField(
-            autocorrect: false,
-            controller: _addressController,
-            decoration: InputDecoration(
-              labelText: ADDRESS,
-//            errorText: ERROR_COMPULSORY_FIELD
-            ),
-            validator: (address) {
-              if (address.isEmpty) return ERROR_COMPULSORY_FIELD;
-              if (address.trim().length > 100) return TO_LONG;
             },
           ),
         ),
