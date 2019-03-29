@@ -40,3 +40,10 @@ const String ABOUT_DESCRIPTION =
     "воспользоваться целым комплексом услуг от наших компаний-партнеров на "
     "особых для вас условиях. Партнерская программа рада предложить вам "
     "различные бонусы, скидки, подарки, а также специальные предложения.";
+
+
+const String KEY_FIRST_NAME = "first_name";
+const String KEY_LAST_NAME = "last_name";
+const String KEY_CITY = "city";
+const String KEY_PHONE_NUMBER = "phone";
+const String KEY_BIRTHDAY = "birthday";

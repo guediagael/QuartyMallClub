@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quarty_mall_club/api/auth_api.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 
@@ -203,5 +204,12 @@ class _NewCardState extends State {
     );
   }
 
-  _sendForm() {}
+  _sendForm() {
+    AuthApi.internal().register("gael1", "TEst1", "Kazan", "2000-01-01", 99999999).then((response){
+      var token = response["token"];
+      var card = response["card"];
+      print("card: $card");
+      print("token: $token");
+    });
+  }
 }
