@@ -11,12 +11,14 @@ class NetworkUtil {
   NetworkUtil.internal();
 
   static const String HEADER_ACCEPT_KEY = 'Accept';
+  static const String AUTHORIZATION_KEY = 'Authorization';
   static const String HEADER_ACCEPT_VALUE_ALL = '*/*';
   static const String HEADER_CACHE_CONTROL_KEY = 'Cache-Control';
   static const String HEADER_CACHE_CONTROL_VALUE_NO_CACHE = 'no-cache';
   static const String RESPONSE_STATUS_CODE = "response_status_code";
   static const String RESPONSE_DATA = "response_data";
   static const String RAW_RESPONSE = "raw_response";
+
 
   factory NetworkUtil()=>_instance;
   Function _errorCallback;
@@ -84,11 +86,14 @@ class NetworkUtil {
 //    });
 //  }
 
-  Future<dynamic> postData(String url,Map<String, Object> data, Function onErrorCallback) {
+  Future<dynamic> postData(String url,Map<String,dynamic> data,
+      Function onErrorCallback, {Map<String, dynamic> header = null}) {
     FormData formData = FormData.from(data);
     _errorCallback = onErrorCallback;
     _dio = Dio();
-    return _dio.post(url,data: formData).then((response){
+    return _dio.post(url,data: formData,options: Options(
+      headers: header
+    )).then((response){
       print("raw response $response");
       var statusCode = response.statusCode;
       print("response status code: $statusCode");
@@ -101,6 +106,11 @@ class NetworkUtil {
       return response.data;
 //      return _decoder.convert(response.data);
     },onError: onError);
+  }
+
+  Future<dynamic> getData(String url,Map<String,dynamic> data,
+      Function onErrorCallback, {Map<String, dynamic> header = null}){
+
   }
 
   onError(dynamic error){

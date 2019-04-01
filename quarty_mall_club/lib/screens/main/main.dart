@@ -156,9 +156,42 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(16, 24, 32, 24),
+              padding: EdgeInsets.fromLTRB(16, 24, 32, 24),
               child: Text(ABOUT_DESCRIPTION,
-                  style: TextStyle(color: Utils.getMainTextColor())))
+                  style: TextStyle(color: Utils.getMainTextColor()))),
+          Container(
+            padding: EdgeInsets.only(left: 16),
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Icons.place,
+                  color: Colors.grey,
+                ),
+                Padding(padding: EdgeInsets.symmetric(horizontal: 4)),
+                Text("г. Казань \nПр. Победы, 157 \nТелефон: +7 (843) 225 37 37")
+              ],
+            ),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 16)),
+          Container(
+            padding: EdgeInsets.only(left: 16),
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  Icons.language,
+                  color: Colors.grey,
+                ),
+                Padding(padding: EdgeInsets.symmetric(horizontal: 4)),
+                Text("kvartimall-club.ru \nEmail: info@kvartimall-club.ru")
+              ],
+            ),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 16)),
+          Container(
+            padding: EdgeInsets.only(left: 48),
+            child: Text(
+                "Режим работы: \nВт-Пт, 9:00-21:00 \nCб, Вс, Пн: 10:00-21:00"),
+          )
         ],
       ),
     );

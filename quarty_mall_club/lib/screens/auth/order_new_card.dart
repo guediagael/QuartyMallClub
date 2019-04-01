@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quarty_mall_club/api/auth_api.dart';
+import 'package:quarty_mall_club/screens/main/main.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:quarty_mall_club/string_resources.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NewCardScreen extends StatefulWidget {
   @override
@@ -14,7 +16,8 @@ class _NewCardState extends State {
   TextEditingController _birthdayController = TextEditingController();
   TextEditingController _cityController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
+
+//  TextEditingController _emailController = TextEditingController();
   bool _isFirstTry, _isLoading;
   var _formKey = GlobalKey<FormState>();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -176,40 +179,58 @@ class _NewCardState extends State {
             ),
             validator: (phone) {
               if (phone.isEmpty) return ERROR_COMPULSORY_FIELD;
-              if (phone.trim().length != 16) return TO_LONG;
+              if (phone.trim().length >= 16) return TO_LONG;
             },
           ),
         ),
-        Container(
-          height: _screenHeight * 4 / 49,
-          child: TextFormField(
-            autocorrect: false,
-            controller: _emailController,
-            decoration: InputDecoration(
-              labelText: EMAIL,
-//            errorText: ERROR_COMPULSORY_FIELD
-            ),
-            validator: (email) {
-              if (email.isEmpty) return ERROR_COMPULSORY_FIELD;
-              Pattern pattern =
-                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))'
-                  r'@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|'
-                  r'(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-              RegExp regex = RegExp(pattern);
-              if (!regex.hasMatch(email)) return WRONG_FORMAT;
-            },
-          ),
-        ),
+//        Container(
+//          height: _screenHeight * 4 / 49,
+//          child: TextFormField(
+//            autocorrect: false,
+//            controller: _emailController,
+//            decoration: InputDecoration(
+//              labelText: EMAIL,
+////            errorText: ERROR_COMPULSORY_FIELD
+//            ),
+//            validator: (email) {
+//              if (email.isEmpty) return ERROR_COMPULSORY_FIELD;
+//              Pattern pattern =
+//                  r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))'
+//                  r'@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|'
+//                  r'(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+//              RegExp regex = RegExp(pattern);
+//              if (!regex.hasMatch(email)) return WRONG_FORMAT;
+//            },
+//          ),
+//        ),
       ],
     );
   }
 
   _sendForm() {
-    AuthApi.internal().register("gael1", "TEst1", "Kazan", "2000-01-01", 99999999).then((response){
-      var token = response["token"];
-      var card = response["card"];
-      print("card: $card");
-      print("token: $token");
-    });
+    if (_formKey.currentState.validate()) {
+      String name = _nameController.text.trim();
+      String surname = _surnameController.text.trim();
+      String city = _cityController.text.trim();
+      String birthday = _birthdayController.text.trim();
+      int phoneNumber = int.parse(_phoneController.text.trim());
+      AuthApi.internal()
+          .register(name, surname, city, birthday, phoneNumber)
+          .then((response) {
+        var token = response["token"];
+        var card = response["card"];
+        print("card: $card");
+        print("token: $token");
+        SharedPreferences.getInstance().then((sp) {
+          sp.setInt(SP_KEY_CARD, card);
+          sp.setString(SP_KEY_TOKEN, token).then((isSet) {
+            if (isSet) {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (ctx) => MainScreen()));
+            }
+          });
+        });
+      });
+    }
   }
 }

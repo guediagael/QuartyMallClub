@@ -47,3 +47,7 @@ const String KEY_LAST_NAME = "last_name";
 const String KEY_CITY = "city";
 const String KEY_PHONE_NUMBER = "phone";
 const String KEY_BIRTHDAY = "birthday";
+const String EDIT = "Редактировать";
+
+const String SP_KEY_TOKEN = "token";
+const String SP_KEY_CARD = "card";
