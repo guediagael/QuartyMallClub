@@ -11,6 +11,7 @@ const String ADDRESS = "Адрес";
 const String PHONE = "Телефон";
 const String EMAIL = "E-mail";
 const String ADD_PHONE_NUMBER = "Введите номер телефона";
+const String ADD_CARD_NUMBER = "Введите номер карты";
 const String GET_CODE = "ПОЛУЧИТЬ КОД";
 const String INSERT_CODE = "Введите код";
 const String GO_TO_LIST = "ВПЕРЕД К СКИДКАМ";

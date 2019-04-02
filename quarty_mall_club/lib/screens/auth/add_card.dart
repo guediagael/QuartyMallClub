@@ -5,6 +5,7 @@ import 'package:quarty_mall_club/screens/main/main.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AddCardScreen extends StatefulWidget {
   @override
@@ -12,18 +13,15 @@ class AddCardScreen extends StatefulWidget {
 }
 
 class _AddCardScreenState extends State<AddCardScreen> {
-  var _phoneFormKey = GlobalKey<FormState>();
-  var _codeFormKey = GlobalKey<FormState>();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _codeController = TextEditingController();
-  bool _isPhoneSent, _isFirstTry;
+  var _cardFormKey = GlobalKey<FormState>();
+  TextEditingController _cardController = TextEditingController();
+  bool _isFirstTry;
   double _screenWidth, _screenHeight;
   double formFieldPaddingVert;
   double formFieldPaddingHor;
 
   @override
   void initState() {
-    _isPhoneSent = false;
     _isFirstTry = true;
     super.initState();
   }
@@ -41,15 +39,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            if (_isPhoneSent) {
-              setState(() {
-                _isPhoneSent = false;
-              });
-            } else {
-              Navigator.pop(context);
-            }
-          },
+          onPressed: () =>Navigator.pop(context),
           color: Colors.black,
         ),
         centerTitle: true,
@@ -76,72 +66,80 @@ class _AddCardScreenState extends State<AddCardScreen> {
           SizedBox(
             height: 24,
           ),
-          _isPhoneSent ? _getCodeForm() : _getPhoneForm(),
+          _getForm(),
           SizedBox(
             height: 16,
           ),
-          Utils.getPurpleFlatButton(_isPhoneSent ? GO_TO_LIST : GET_CODE,
+          Utils.getPurpleFlatButton(SEND,
               () => _checkForm(), _screenWidth * 2 / 3, _screenHeight / 13)
         ],
       ),
     );
   }
 
-  Form _getPhoneForm() {
+  Form _getForm() {
     return Form(
-      key: _phoneFormKey,
+      key: _cardFormKey,
       child: TextFormField(
         autofocus: true,
-        controller: _phoneController,
+        controller: _cardController,
         decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(28)),
             contentPadding: EdgeInsets.symmetric(
                 horizontal: formFieldPaddingHor,
                 vertical: formFieldPaddingVert),
-            hintText: ADD_PHONE_NUMBER),
-        validator: (phone) {
-          if (phone.isEmpty) return ERROR_COMPULSORY_FIELD;
-          if (phone.trim().length != 16) return TO_LONG;
+            hintText: ADD_CARD_NUMBER),
+        validator: (cardNumber) {
+          if (cardNumber.isEmpty) return ERROR_COMPULSORY_FIELD;
+          if (cardNumber.trim().length >= 16) return TO_LONG;
         },
       ),
       autovalidate: !_isFirstTry,
     );
   }
 
-  Form _getCodeForm() {
-    return Form(
-      key: _codeFormKey,
-      child: TextFormField(
-        autofocus: true,
-        controller: _codeController,
-        validator: (code) {
-          if (code.isEmpty) {
-            return ERROR_COMPULSORY_FIELD;
-          }
-        },
-        decoration: InputDecoration(
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(28)),
-            contentPadding: EdgeInsets.symmetric(
-                horizontal: formFieldPaddingHor,
-                vertical: formFieldPaddingVert),
-            hintText: INSERT_CODE),
-      ),
-      autovalidate: !_isFirstTry,
-    );
-  }
+//  Form _getCodeForm() {
+//    return Form(
+//      key: _codeFormKey,
+//      child: TextFormField(
+//        autofocus: true,
+//        controller: _codeController,
+//        validator: (code) {
+//          if (code.isEmpty) {
+//            return ERROR_COMPULSORY_FIELD;
+//          }
+//        },
+//        decoration: InputDecoration(
+//            border: OutlineInputBorder(borderRadius: BorderRadius.circular(28)),
+//            contentPadding: EdgeInsets.symmetric(
+//                horizontal: formFieldPaddingHor,
+//                vertical: formFieldPaddingVert),
+//            hintText: INSERT_CODE),
+//      ),
+//      autovalidate: !_isFirstTry,
+//    );
+//  }
 
   _sendPhoneNumber() {}
 
   _sendCode() {}
 
   _checkForm() {
-    AuthApi.internal().getToken(10001).then((response){
-      var token = response["token"];
-      print("token: $token");
-    });
-//    Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=>MainScreen()));
-//    setState(() {
-//      _isPhoneSent = true;
-//    });
+    if(_cardFormKey.currentState.validate()){
+      int cardNumber = int.parse(_cardController.text.trim());
+      AuthApi.internal().getToken(cardNumber).then((response) {
+        var token = response["token"];
+        print("token: $token");
+        SharedPreferences.getInstance().then((sp) {
+          sp.setString(SP_KEY_TOKEN, token).then((isSet) {
+            if (isSet) {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (ctx) => MainScreen()));
+            }
+          });
+        });
+      });
+    }
+
   }
 }
