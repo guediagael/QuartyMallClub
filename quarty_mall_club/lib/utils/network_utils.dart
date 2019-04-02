@@ -110,7 +110,19 @@ class NetworkUtil {
 
   Future<dynamic> getData(String url,Map<String,dynamic> data,
       Function onErrorCallback, {Map<String, dynamic> header = null}){
-
+    if(_dio == null) _dio = Dio();
+    return _dio.get(url, options: Options(headers: header)).then((response){
+      print("raw response $response");
+      var statusCode = response.statusCode;
+      print("response status code: $statusCode");
+      if(statusCode < 200 || statusCode > 400) {
+        onErrorCallback({
+          RESPONSE_STATUS_CODE:statusCode,
+          RESPONSE_DATA: response.data});
+        return null;
+      }
+      return response.data;
+    },onError: onError);
   }
 
   onError(dynamic error){

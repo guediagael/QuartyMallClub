@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quarty_mall_club/api/profile_api.dart';
+import 'package:quarty_mall_club/model/profile.dart';
+import 'package:quarty_mall_club/screens/main/profile_screen.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScreen extends StatefulWidget {
+  final String TAG = "MainScreen";
   @override
   State<StatefulWidget> createState() => _MainScreenState();
 }
@@ -12,11 +17,13 @@ class _MainScreenState extends State<MainScreen> {
   double _screenWidth, _screenHeight;
   int _selectedIndex;
   String _title;
+  ProfileApi profileApi;
 
   @override
   void initState() {
     _title = "";
     _selectedIndex = 0;
+    profileApi = ProfileApi.internal();
     super.initState();
   }
 
@@ -168,7 +175,8 @@ class _MainScreenState extends State<MainScreen> {
                   color: Colors.grey,
                 ),
                 Padding(padding: EdgeInsets.symmetric(horizontal: 4)),
-                Text("г. Казань \nПр. Победы, 157 \nТелефон: +7 (843) 225 37 37")
+                Text(
+                    "г. Казань \nПр. Победы, 157 \nТелефон: +7 (843) 225 37 37")
               ],
             ),
           ),
@@ -198,6 +206,62 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Container _buildProfile() {
-//    TODO
+    return Container(
+      child: FutureBuilder<Profile>(
+        future: _getProfile(),
+        builder: (ctx, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return _showMessage(MSG_NO_CONNECTION);
+            case ConnectionState.waiting:
+              return Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(top: 50.0),
+                  child: new CircularProgressIndicator());
+            case ConnectionState.done:
+              if (snapshot.hasError) {
+                print("error loading profile ${snapshot.error}");
+                return _showMessage(MSG_SERVER_ERROR);
+              } else {
+                if (snapshot.data == null) {
+                  return Container();
+                } else {
+                  return ProfileScreen(snapshot.data);
+                }
+              }
+              break;
+            case ConnectionState.active:
+              break;
+          }
+        },
+      ),
+    );
+  }
+
+  Future<Profile> _getProfile() {
+    return SharedPreferences.getInstance().then((sp){
+      String token = sp.getString(SP_KEY_TOKEN);
+      if(token !=null){
+        return profileApi.getProfile(token).then((response){
+          String firstName = response['first_name'];
+          String lastName = response['last_name'];
+          String city = "";
+          String birthday = "";
+          String phoneNumber = "";
+          Profile profile = Profile(firstName, lastName, birthday, city, phoneNumber);
+          return profile;
+        },onError: _onError);
+      }
+    });
+  }
+
+  Widget _showMessage(String message) {
+    return Center(
+      child: Text(message),
+    );
+  }
+
+  _onError(dynamic error){
+    print("$MainScreen.TAG 🤷‍♂️🤷‍♂️: $error");
   }
 }

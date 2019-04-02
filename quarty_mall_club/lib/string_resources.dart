@@ -52,3 +52,6 @@ const String EDIT = "Редактировать";
 
 const String SP_KEY_TOKEN = "token";
 const String SP_KEY_CARD = "card";
+
+const String MSG_NO_CONNECTION = "Нет подключении к сети";
+const String MSG_SERVER_ERROR = "Ощибка сервера";

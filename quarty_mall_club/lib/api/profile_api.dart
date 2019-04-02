@@ -10,7 +10,7 @@ class ProfileApi{
   factory ProfileApi() => _instance;
 
 
-  Future<dynamic> getProfile(String token){
+  Future<Map<String, dynamic>> getProfile(String token){
     assert (token!=null);
     return _networkUtil.getData(_showProfileUrl, null, _profileError,
         header: {NetworkUtil.AUTHORIZATION_KEY : "Token $token"}).then((response){

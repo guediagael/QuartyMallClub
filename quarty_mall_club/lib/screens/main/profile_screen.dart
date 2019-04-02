@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:quarty_mall_club/model/profile.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 
 class ProfileScreen extends StatefulWidget {
-  String _name, _surname, _birthday, _city, _phone;
+  Profile _profile;
 
-  ProfileScreen(
-      String name, String surname, String birthday, String city, String phone) {
-    this._name = name;
-    this._surname = surname;
-    this._birthday = birthday;
-    this._city = city;
-    this._phone = phone;
+  ProfileScreen(Profile profile) {
+    this._profile = profile;
   }
 
   @override
@@ -27,22 +23,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController _cityController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
 
+  double _screenWidth, _screenHeight;
   String _name, _surname, _birthday, _city, _phone;
 
   @override
   void initState() {
     _isEditMode = false;
     _isFirstTry = true;
-    _name = widget._name;
-    _surname = widget._surname;
-    _birthday = widget._birthday;
-    _city = widget._city;
-    _phone = widget._phone;
+    _name = widget._profile.name;
+    _surname = widget._profile.surname;
+    _birthday = widget._profile.birthday;
+    _city = widget._profile.city;
+    _phone = widget._profile.phone;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    _screenWidth = size.width;
+    _screenHeight = size.height;
     return Form(
       key: _formState,
       child: Container(
@@ -56,20 +56,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Column(
       children: <Widget>[
         Card(
+          margin: EdgeInsets.symmetric(horizontal: 16),
           color: Colors.white,
           borderOnForeground: true,
           child: Container(
+            width: _screenWidth,
+            padding: EdgeInsets.all(24),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(_name),
+                Padding(padding: EdgeInsets.symmetric(vertical: 8)),
                 Text(_surname),
-                Text(_birthday),
-                Text(_city),
-                Text(_phone),
+//                Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+//                Text(_birthday),
+//                Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+//                Text(_city),
+//                Padding(padding: EdgeInsets.symmetric(vertical: 8)),
+//                Text(_phone),
               ],
             ),
           ),
         ),
+        Padding(padding: EdgeInsets.symmetric(vertical: 8)),
         InkWell(
           onTap: () {
             setState(() {
