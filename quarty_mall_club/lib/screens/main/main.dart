@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quarty_mall_club/api/card_api.dart';
 import 'package:quarty_mall_club/api/profile_api.dart';
+import 'package:quarty_mall_club/model/card_category.dart';
 import 'package:quarty_mall_club/model/profile.dart';
 import 'package:quarty_mall_club/screens/main/profile_screen.dart';
 import 'package:quarty_mall_club/string_resources.dart';
@@ -18,12 +20,14 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex;
   String _title;
   ProfileApi profileApi;
+  CardApi cardApi;
 
   @override
   void initState() {
     _title = "";
     _selectedIndex = 0;
     profileApi = ProfileApi.internal();
+    cardApi = CardApi.internal();
     super.initState();
   }
 
@@ -239,6 +243,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<Profile> _getProfile() {
+    _getCategories();
     return SharedPreferences.getInstance().then((sp){
       String token = sp.getString(SP_KEY_TOKEN);
       if(token !=null){
@@ -253,6 +258,27 @@ class _MainScreenState extends State<MainScreen> {
         },onError: _onError);
       }
     });
+  }
+
+  Future<List<CardCategory>> _getCategories(){
+    return SharedPreferences.getInstance().then((sp){
+      String token = sp.get(SP_KEY_TOKEN);
+      if(token !=null){
+        return cardApi.getCards(token).then((response){
+          List results = response['results'];
+          results.forEach((r)=> _mapResponseToCard(r));
+        });
+      }
+    });
+  }
+
+  CardCategory _mapResponseToCard(Map<String, dynamic> result){
+    int id = result['id'];
+    String name = result['name'];
+    String imageUrl = result['image'];
+    CardCategory cardCategory = CardCategory(id, name, imageUrl);
+    print("cardCat: ${cardCategory.name}");
+    return cardCategory;
   }
 
   Widget _showMessage(String message) {

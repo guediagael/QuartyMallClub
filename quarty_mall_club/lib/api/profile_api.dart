@@ -2,6 +2,7 @@ import 'package:quarty_mall_club/string_resources.dart';
 import 'package:quarty_mall_club/utils/network_utils.dart';
 
 class ProfileApi{
+  final String TAG = "ProfileApi";
   NetworkUtil _networkUtil = NetworkUtil();
   static const String _showProfileUrl = BASE_URL +"/whoami";
   static const String _editProfileUrl = BASE_URL +"/whoami";
@@ -22,6 +23,6 @@ class ProfileApi{
   }
 
   _profileError(dynamic error){
-    print("🤷‍♂️🤷‍♂️: $error");
+    print(TAG+"🤷‍♂️🤷‍♂️: $error");
   }
 }

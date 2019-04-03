@@ -12,7 +12,9 @@ class NetworkUtil {
 
   static const String HEADER_ACCEPT_KEY = 'Accept';
   static const String AUTHORIZATION_KEY = 'Authorization';
+  static const String CONTENT_TYPE_KEY = 'Content-Type';
   static const String HEADER_ACCEPT_VALUE_ALL = '*/*';
+  static const String HEADER_VALUE_APPLICATION_URL_ENCODED = 'application/x-www-form-urlencoded';
   static const String HEADER_CACHE_CONTROL_KEY = 'Cache-Control';
   static const String HEADER_CACHE_CONTROL_VALUE_NO_CACHE = 'no-cache';
   static const String RESPONSE_STATUS_CODE = "response_status_code";
