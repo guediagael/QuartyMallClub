@@ -134,7 +134,7 @@ class _MainScreenState extends State<MainScreen> {
     switch (_selectedIndex) {
       case 0:
         return _buildMain();
-        break;
+//        break;
       case 1:
         return _buildSales();
       case 2:
@@ -173,6 +173,7 @@ class _MainScreenState extends State<MainScreen> {
                 } else {
                   return GridView.count(
                     crossAxisCount: 2,
+                    padding: EdgeInsets.symmetric(horizontal: 16),
                     children: List.generate(snapshot.data.length, (index){
                       return _buildCategoryElement(snapshot.data[index]);
                     })
@@ -317,27 +318,31 @@ class _MainScreenState extends State<MainScreen> {
     return cardCategory;
   }
 
-  Container _buildCategoryElement(CardCategory cardCategoryModel) {
-    return Container(
-      height: _screenHeight * 2 / 5,
-      width: _screenWidth * 2 / 5,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24), color: Colors.white),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            height: _screenHeight * 6 / 25,
-            width: _screenWidth * 2 / 5,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(24)),
-            child: CachedNetworkImage(
-              imageUrl: cardCategoryModel.imageUrl,
-              placeholder: (context, url) => new CircularProgressIndicator(),
-              errorWidget: (context, url, error) => new Icon(Icons.error),
+  InkWell _buildCategoryElement(CardCategory cardCategoryModel) {
+    return InkWell(
+      onTap: ()=> _openDetails(cardCategoryModel),
+      child: Container(
+        height: _screenHeight * 3 / 7,
+        width: _screenWidth * 3 / 7,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16), color: Colors.white),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              height: _screenHeight * 6 / 27,
+              width: _screenWidth * 3 / 7,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+              child: CachedNetworkImage(
+                imageUrl: cardCategoryModel.imageUrl,
+                placeholder: (context, url) => new CircularProgressIndicator(),
+                errorWidget: (context, url, error) => new Icon(Icons.error),
+              ),
             ),
-          ),
-          Center(child: Text(cardCategoryModel.name),)
-        ],
+            Text(cardCategoryModel.name)
+          ],
+        ),
       ),
     );
   }
@@ -346,6 +351,9 @@ class _MainScreenState extends State<MainScreen> {
     return Center(
       child: Text(message),
     );
+  }
+  _openDetails(CardCategory cardCategory){
+    print("opening ${cardCategory.name}");
   }
 
   _onError(dynamic error) {

@@ -82,6 +82,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
       key: _cardFormKey,
       child: TextFormField(
         autofocus: true,
+        keyboardType: TextInputType.number,
         controller: _cardController,
         decoration: InputDecoration(
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(28)),
