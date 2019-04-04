@@ -5,6 +5,7 @@ import 'package:quarty_mall_club/api/profile_api.dart';
 import 'package:quarty_mall_club/model/card_category.dart';
 import 'package:quarty_mall_club/model/profile.dart';
 import 'package:quarty_mall_club/screens/main/profile_screen.dart';
+import 'package:quarty_mall_club/screens/partner_list_screen.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -335,6 +336,7 @@ class _MainScreenState extends State<MainScreen> {
               width: _screenWidth * 3 / 7,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
               child: CachedNetworkImage(
+                key: Key("listElement${cardCategoryModel.toString()}"),
                 imageUrl: cardCategoryModel.imageUrl,
                 placeholder: (context, url) => new CircularProgressIndicator(),
                 errorWidget: (context, url, error) => new Icon(Icons.error),
@@ -354,6 +356,8 @@ class _MainScreenState extends State<MainScreen> {
   }
   _openDetails(CardCategory cardCategory){
     print("opening ${cardCategory.name}");
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (ctx)=>PartnerListScreen(cardCategory)));
   }
 
   _onError(dynamic error) {
