@@ -8,6 +8,7 @@ import 'package:quarty_mall_club/screens/main/profile_screen.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class MainScreen extends StatefulWidget {
   final String TAG = "MainScreen";
@@ -150,7 +151,41 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Container _buildSales() {
-//    TODO
+    return Container(
+      child: FutureBuilder<List<CardCategory>>(
+        future: _getCategories(),
+        builder: (ctx, snapshot){
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return _showMessage(MSG_NO_CONNECTION);
+            case ConnectionState.waiting:
+              return Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(top: 50.0),
+                  child: new CircularProgressIndicator());
+            case ConnectionState.done:
+              if (snapshot.hasError) {
+                print("error building cards ${snapshot.error}");
+                return _showMessage(MSG_SERVER_ERROR);
+              } else {
+                if (snapshot.data == null) {
+                  return Container();
+                } else {
+                  return GridView.count(
+                    crossAxisCount: 2,
+                    children: List.generate(snapshot.data.length, (index){
+                      return _buildCategoryElement(snapshot.data[index]);
+                    })
+                  );
+                }
+              }
+              break;
+            case ConnectionState.active:
+              break;
+          }
+        },
+      ),
+    );
   }
 
   Container _buildAbout() {
@@ -243,36 +278,37 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<Profile> _getProfile() {
-    _getCategories();
-    return SharedPreferences.getInstance().then((sp){
+    return SharedPreferences.getInstance().then((sp) {
       String token = sp.getString(SP_KEY_TOKEN);
-      if(token !=null){
-        return profileApi.getProfile(token).then((response){
+      if (token != null) {
+        return profileApi.getProfile(token).then((response) {
           String firstName = response['first_name'];
           String lastName = response['last_name'];
           String city = "";
           String birthday = "";
           String phoneNumber = "";
-          Profile profile = Profile(firstName, lastName, birthday, city, phoneNumber);
+          Profile profile =
+              Profile(firstName, lastName, birthday, city, phoneNumber);
           return profile;
-        },onError: _onError);
+        }, onError: _onError);
       }
     });
   }
 
-  Future<List<CardCategory>> _getCategories(){
-    return SharedPreferences.getInstance().then((sp){
+  Future<List<CardCategory>> _getCategories() {
+    return SharedPreferences.getInstance().then((sp) {
       String token = sp.get(SP_KEY_TOKEN);
-      if(token !=null){
-        return cardApi.getCards(token).then((response){
+      if (token != null) {
+        return cardApi.getCards(token).then((response) {
           List results = response['results'];
-          results.forEach((r)=> _mapResponseToCard(r));
+          // results.forEach((r) => _mapResponseToCard(r));
+          return results.map((r)=> _mapResponseToCard(r)).toList();
         });
       }
     });
   }
 
-  CardCategory _mapResponseToCard(Map<String, dynamic> result){
+  CardCategory _mapResponseToCard(Map<String, dynamic> result) {
     int id = result['id'];
     String name = result['name'];
     String imageUrl = result['image'];
@@ -281,13 +317,38 @@ class _MainScreenState extends State<MainScreen> {
     return cardCategory;
   }
 
+  Container _buildCategoryElement(CardCategory cardCategoryModel) {
+    return Container(
+      height: _screenHeight * 2 / 5,
+      width: _screenWidth * 2 / 5,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(24), color: Colors.white),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            height: _screenHeight * 6 / 25,
+            width: _screenWidth * 2 / 5,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(24)),
+            child: CachedNetworkImage(
+              imageUrl: cardCategoryModel.imageUrl,
+              placeholder: (context, url) => new CircularProgressIndicator(),
+              errorWidget: (context, url, error) => new Icon(Icons.error),
+            ),
+          ),
+          Center(child: Text(cardCategoryModel.name),)
+        ],
+      ),
+    );
+  }
+
   Widget _showMessage(String message) {
     return Center(
       child: Text(message),
     );
   }
 
-  _onError(dynamic error){
+  _onError(dynamic error) {
     print("$MainScreen.TAG 🤷‍♂️🤷‍♂️: $error");
   }
 }
