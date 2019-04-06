@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:quarty_mall_club/api/partners_api.dart';
 import 'package:quarty_mall_club/model/card_category.dart';
 import 'package:quarty_mall_club/model/partner.dart';
 import 'package:quarty_mall_club/string_resources.dart';
+import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PartnerListScreen extends StatelessWidget {
@@ -18,38 +20,52 @@ class PartnerListScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     _screenWidth = size.width;
     _screenHeight = size.height;
-    return Scaffold(
-      body: FutureBuilder<List<Partner>>(
-        future: _getPartners(),
-        builder: (ctx, snapshot){
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-              return _showMessage(MSG_NO_CONNECTION);
-            case ConnectionState.waiting:
-              return Container(
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.only(top: 50.0),
-                  child: new CircularProgressIndicator());
-            case ConnectionState.done:
-              if (snapshot.hasError) {
-                print("error loading partners ${snapshot.error}");
-                return _showMessage(MSG_SERVER_ERROR);
-              } else {
-                if (snapshot.data == null) {
-                  return Container();
-                } else {
-                  return ListView.builder(
-                    itemCount: snapshot.data.length,
-                      itemBuilder: (ctx,index){
-                    return _buildPartnerCard(snapshot.data[index]);
-                  });
-                }
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark
+        .copyWith(statusBarColor: Utils.getMainBackgroundColor()));
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          leading: BackButton(color: Utils.getMainTextColor(),),
+          centerTitle: true,
+          backgroundColor: Utils.getMainBackgroundColor(),
+          title: Title(color: Utils.getMainBackgroundColor(), child: Text(cardCategory.name, style: TextStyle(color: Utils.getMainTextColor()),)),
+        ),
+        body: Container(
+          padding: EdgeInsets.all(16),
+          color: Utils.getMainBackgroundColor(),
+          child: FutureBuilder<List<Partner>>(
+            future: _getPartners(),
+            builder: (ctx, snapshot){
+              switch (snapshot.connectionState) {
+                case ConnectionState.none:
+                  return _showMessage(MSG_NO_CONNECTION);
+                case ConnectionState.waiting:
+                  return Container(
+                      alignment: Alignment.center,
+                      margin: const EdgeInsets.only(top: 50.0),
+                      child: new CircularProgressIndicator());
+                case ConnectionState.done:
+                  if (snapshot.hasError) {
+                    print("error loading partners ${snapshot.error}");
+                    return _showMessage(MSG_SERVER_ERROR);
+                  } else {
+                    if (snapshot.data == null) {
+                      return Container();
+                    } else {
+                      return ListView.builder(
+                        itemCount: snapshot.data.length,
+                          itemBuilder: (ctx,index){
+                        return _buildPartnerCard(snapshot.data[index]);
+                      });
+                    }
+                  }
+                  break;
+                case ConnectionState.active:
+                  break;
               }
-              break;
-            case ConnectionState.active:
-              break;
-          }
-        },
+            },
+          ),
+        ),
       ),
     );
   }
