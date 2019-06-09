@@ -55,3 +55,5 @@ const String SP_KEY_CARD = "card";
 
 const String MSG_NO_CONNECTION = "Нет подключении к сети";
 const String MSG_SERVER_ERROR = "Ощибка сервера";
+
+const String BOOKMARK = "ДОБАВИТЬ В ИЗБРАННОЕ";

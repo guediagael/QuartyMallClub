@@ -9,6 +9,4 @@ class CardCategory {
   String toString() {
     return 'CardCategory{id: $id, name: $name, imageUrl: $imageUrl}';
   }
-
-
 }

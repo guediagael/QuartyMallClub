@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path/path.dart';
 import 'package:quarty_mall_club/api/partners_api.dart';
 import 'package:quarty_mall_club/model/card_category.dart';
 import 'package:quarty_mall_club/model/partner.dart';
+import 'package:quarty_mall_club/screens/partner_details_screen.dart';
 import 'package:quarty_mall_club/string_resources.dart';
 import 'package:quarty_mall_club/utils/commons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,10 +16,12 @@ class PartnerListScreen extends StatelessWidget {
   final List<Partner> partners = List<Partner>();
   PartnerListScreen(this.cardCategory);
   PartnersApi _partnersApi = PartnersApi.internal();
+  BuildContext _context;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    _context = context;
     _screenWidth = size.width;
     _screenHeight = size.height;
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark
@@ -82,7 +86,7 @@ class PartnerListScreen extends StatelessWidget {
 
   InkWell _buildPartnerCard(Partner partner) {
     return InkWell(
-      onTap: () => _showDetails(partner.id),
+      onTap: () => _showDetails(partner),
       child: Container(
         height: _screenHeight / 3,
         width: (_screenWidth * 3 / 7) - 16,
@@ -97,11 +101,14 @@ class PartnerListScreen extends StatelessWidget {
               width: _screenWidth - 16,
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(16)),
-              child: CachedNetworkImage(
-                key: Key("listElement"+partner.toString()),
-                imageUrl: partner.image,
-                placeholder: (context, url) => new CircularProgressIndicator(),
-                errorWidget: (context, url, error) => new Icon(Icons.error),
+              child: Hero(
+                tag: partner.name,
+                child: CachedNetworkImage(
+                  key: Key("listElement"+partner.toString()),
+                  imageUrl: partner.image,
+                  placeholder: (context, url) => new CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => new Icon(Icons.error),
+                ),
               ),
             ),
             Text(partner.name)
@@ -111,8 +118,9 @@ class PartnerListScreen extends StatelessWidget {
     );
   }
 
-  _showDetails(int id){
-    print("showing details $id");
+  _showDetails(Partner partner){
+
+    Navigator.of(_context).push(MaterialPageRoute(builder: (ctx)=> PartnerDetails(partner)));
   }
 
   Partner _mapResponseToModel(Map<String, dynamic> remotePartner){
